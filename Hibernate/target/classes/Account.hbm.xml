@@ -1,0 +1,22 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping schema="sqltest">
+   <class name = "com.infobeans.pojo.Account" table = "ACCOUNT">
+      
+      <meta attribute = "class-description">
+         This class contains the account detail. 
+      </meta>
+      
+      <id name = "accno" type = "long" column = "ACCNO">
+       <!--   <generator class="native"/> -->
+      </id>
+      
+      <property name = "name" column = "NAME" type = "string"/>
+      <property name = "balance" column = "BAL" type = "double"/>
+      <property name = "creationDate" column = "CREATION_DT" type = "date"/>
+      
+   </class>
+</hibernate-mapping>
