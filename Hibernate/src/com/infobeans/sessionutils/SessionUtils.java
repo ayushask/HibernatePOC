@@ -11,8 +11,13 @@ public class SessionUtils {
 
 	static {
 		try {
-		sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-		}catch (Exception e) {
+
+			if (Thread.currentThread().getName().equals("WithoutAnnotation")) {
+				sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+			} else {
+				sessionFactory = new Configuration().configure("hibernate_annot.cfg.xml").buildSessionFactory();
+			}
+		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
@@ -45,14 +50,13 @@ public class SessionUtils {
 	}
 
 	public static void closeSession(Session session) {
-
 		if (session != null) {
 			session.close();
 		}
 	}
-	
+
 	public static void closeSessionFactory() {
-		if(sessionFactory != null) {
+		if (sessionFactory != null) {
 			sessionFactory.close();
 		}
 	}
